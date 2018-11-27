@@ -17,5 +17,12 @@ golang-git-make-dep-npm: docker-auth
 	docker push dynbit/golang-git-make-dep-npm:${CIRCLE_BUILD_NUM} && \
 	docker push dynbit/golang-git-make-dep-npm:latest
 
+golang-eddy: docker-auth
+	docker build -f versions/golang/1.11.2/eddy/Dockerfile -t golang-eddy . && \
+	docker tag golang-eddy:latest dynbit/golang-eddy:${CIRCLE_BUILD_NUM}  && \
+	docker tag golang-eddy:latest dynbit/golang-eddy:latest  && \
+	docker push dynbit/golang-eddy:${CIRCLE_BUILD_NUM} && \
+	docker push dynbit/golang-eddy:latest
+
 
 

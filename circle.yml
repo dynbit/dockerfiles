@@ -17,4 +17,8 @@ jobs:
           name: Build & Upload golang-git-make-dep-npm
           command:
             make golang-git-make-dep-npm
+      - run:
+          name: Build & Upload golang-eddy
+          command:
+            make golang-eddy
 
