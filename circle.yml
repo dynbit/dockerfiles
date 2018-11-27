@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/build
+    docker:
+      - image: docker:git
+    steps:
+      - checkout
+      - setup_remote_docker:
+          reusable: true
+          exclusive: true
+      - run:
+          name: Build image
+          command: make golang-dep-image
+      - deploy:
+          name: Upload image
+          command: make golang-dep-upload
+
