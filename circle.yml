@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/build
     docker:
-      - image: docker:git
+      - image: ubuntu:18.04
     steps:
       - checkout
       - setup_remote_docker:
