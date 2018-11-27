@@ -3,16 +3,18 @@ jobs:
   build:
     working_directory: ~/build
     docker:
-      - image: ubuntu:18.04
+      - image: dynbit/alpine-docker-make-git:latest
     steps:
       - checkout
       - setup_remote_docker:
           reusable: true
           exclusive: true
       - run:
-          name: Build image
-          command: make golang-dep-image
-      - deploy:
-          name: Upload image
-          command: make golang-dep-upload
+          name: Build & Upload alpine-docker-make-git
+          command:
+            make alpine-docker-make-git
+      - run:
+          name: Build & Upload golang-git-make-dep-npm
+          command:
+            make golang-git-make-dep-npm
 
