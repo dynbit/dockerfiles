@@ -1,4 +1,4 @@
-FROM golang:1.11.2-stretch
+FROM golang:1.12-stretch
 
 # NODE && GO
 
