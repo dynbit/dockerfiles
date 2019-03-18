@@ -2,6 +2,10 @@ FROM golang:1.12-stretch
 
 # NODE && GO
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
+    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    apt-get update -y && apt-get install google-cloud-sdk -y
 RUN apt-get update \
 	&& apt-get install -y  jq nodejs \
 	&& rm -rf /var/lib/apt/lists/*
